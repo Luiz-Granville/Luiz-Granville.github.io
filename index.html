@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqui, Onde o Sol Ainda Te Espera</title>
+    <link rel="icon" href="favicon_sun.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Mensagem de Abertura -->
+    <section class="opening-message">
+        <div id="petals-canvas"></div>
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h1 class="highlight-phrase">“Se for leve, a gente vive. Se doer, a gente cuida.”</h1>
+                    <p class="subtext">Amor, esse jardim foi feito só pra você.<br>Com cada detalhe, cada cor, cada palavra... eu tentei transformar o meu arrependimento em cuidado.<br>Esse cantinho é o nosso lugar seguro — onde teu coração pode descansar e florescer, sem cobranças.</p>
+                </div>
+                <div class="sunflower-animation">
+                    <img src="assets/images/isabelle_girassol.png" alt="Isabelle no girassol">
+                </div>
+            </div>
+            <button class="enter-button">Entrar no nosso Jardim 🌻</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Nossos caminhos por aqui: (fixado na lateral esquerda) -->     <nav class="bottom-menu" id="bottom-menu">
+            <div class="menu-toggle" id="menu-toggle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+            </div>
+            <ul class="menu-items" id="menu-items">
+                <li><a href="#interactive-garden">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/><path d="M12 2a2 2 0 0 0-2 2c0 .74.4 1.39 1 1.73V7a2 2 0 0 0 2 2h1.27c.34.6.99 1 1.73 1a2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V5a2 2 0 0 0-2-2h-1.27C13.39 2.4 12.74 2 12 2Z"/><path d="M12 17v1.73c.6.34 1 .99 1 1.73a2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-.74.4-1.39 1-1.73V17a2 2 0 0 1 2-2h1.27c.34-.6.99-1 1.73-1a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V19a2 2 0 0 1-2 2h-1.27c-.34.6-.99 1-1.73 1Z"/></svg>
+                    Flores que falam
+                </a></li>
+                <li><a href="#affective-playlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    Trilhas do que a gente sente
+                </a></li>
+                <li><a href="#digital-letter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Uma carta que te escuta
+                </a></li>
+                <li><a href="#word-wheel">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M22 9L18 13"/><path d="M18 9L22 13"/></svg>
+                    Flores do silêncio
+                </a></li>
+                <li><a href="#care-kit">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    Kit de carinho emergencial
+                </a></li>
+                <li><a href="#travel-gallery">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.65 17.65L12 23l-5.65-5.65C3.5 14.1 2 11.15 2 8.5 2 5.42 4.42 3 7.5 3c2 0 3.84 1.11 4.71 2.79C13.66 4.11 15.5 3 17.5 3 20.58 3 23 5.42 23 8.5c0 2.65-1.5 5.6-4.35 8.15z"/></svg>
+                    Lugares onde o sol encostou
+                </a></li>
+                <li><a href="#about-garden">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Por que esse jardim existe
+                </a></li>
+            </ul>
+        </nav>
+
+        <!-- Jardim Interativo -->
+        <section id="interactive-garden" class="interactive-garden-section">
+            <div id="petals-canvas-garden"></div>
+            <div class="container">
+                <h2 class="section-title">Flores que falam</h2>
+                <p class="instruction-text">Clique nas flores para ouvir</p>
+                <div class="floating-garden">
+                    <div class="floating-flower" data-phrase="Hoje você é suficiente, mesmo nos dias nublados.">🌸</div>
+                    <div class="floating-flower" data-phrase="Se você precisar se recolher, eu te espero com paciência e amor.">🌺</div>
+                    <div class="floating-flower" data-phrase="Te ver sorrir — mesmo de canto — já ilumina tudo.">🌻</div>
+                    <div class="floating-flower" data-phrase="Tô aqui, mesmo quando você não consegue estar.">🌷</div>
+                    <div class="floating-flower" data-phrase="Você não precisa ser forte o tempo todo. Pode só... ser.">🌹</div>
+                    <div class="floating-flower" data-phrase="Teu jeitinho ainda me dá vontade de ficar. De cuidar. De tentar.">🌼</div>
+                </div>
+                <div class="phrase-display" id="phrase-display"></div>
+            </div>
+        </section>
+
+        <!-- Playlist Afetiva -->
+        <section id="affective-playlist" class="music-section">
+            <div id="petals-canvas-music"></div>
+            <div class="container">
+                <h2 class="section-title">“Se for leve, a gente vive.”</h2>
+                <p class="intro-text">Cada música aqui tem o teu nome escondido nas notas.<br>Tem cheiro de fruta, sorriso de canto, e aquela dança sua do nada com a mão colada na cara.<br>É pra ouvir quando quiser lembrar que o nosso amor pode ser leve — mesmo quando carrega dor.</p>
+                <div class="amazon-music-embed">
+                    <iframe src="https://music.amazon.com.br/embed/f20cfee453464486b01c20fe4500ab23b1r0/?marketplaceId=ART4WZ8MWBX2Y&musicTerritory=BR" 
+                            width="100%" 
+                            height="400" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cartinha Digital -->
+        <section id="digital-letter" class="digital-letter-section">
+            <div id="petals-canvas-letter"></div>
+            <div class="container">
+                <h2 class="section-title">Cartinha Digital</h2>
+                <div class="envelope-container">
+                    <div class="envelope" id="envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-body">
+                            <div class="envelope-text">Uma cartinha <br> feita com carinho 💌</div>
+                        </div>
+                    </div>
+                    <div class="letter-content" id="letter-content">
+                        <div class="letter-paper">
+                            <p class="letter-text">Amor,</p>
+                            <p class="letter-text">Sei que essa viagem carrega um monte de sentimentos misturados — medo, esperança, dúvida, cansaço…</p>
+                            <p class="letter-text">Mas o que eu mais quero que você saiba é que eu não espero perfeição. Não espero respostas. Só quero a gente, do jeitinho que for possível.</p>
+                            <p class="letter-text">Se vier um sorriso, eu guardo. Se vier o silêncio, eu respeito. Se vier o carinho, eu celebro.</p>
+                            <p class="letter-text">E se em algum momento der vontade de se fechar ou ficar distante, eu não vou te cobrar. Eu vou continuar aqui — do seu lado, não na frente.</p>
+                            <p class="letter-text">Você é importante demais pra mim. Mesmo nos seus dias nublados, mesmo quando sente que não tá conseguindo ser, eu ainda te vejo com amor.</p>
+                            <p class="letter-text">Obrigado por tentar, mesmo cansada. Eu também tô tentando — por você, por nós, por tudo que ainda pode ser leve.</p>
+                            <p class="letter-text">E se vier aquele seu jeitinho, mesmo que só um pouquinho… já vai ser o suficiente pra eu me sentir em casa.</p>
+                            <p class="letter-text">Te amo,</p>
+                            <p class="letter-text">— Luiz 💛</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flores brotando, e uma desabrocha (Bloom Reveal) -->
+        <section id="word-wheel" class="word-wheel-section">
+            <div id="petals-canvas-wheel"></div>
+            <div class="container">
+                <h2 class="section-title">Flores do silêncio</h2>
+                <p class="instruction-text">Esperar não é vazio — é preparação. Uma flor vai dizer o que talvez seu coração precise lembrar.</p>
+                <div class="bloom-reveal-container">
+                    <div class="flower-display" id="flower-display"></div>
+                    <button class="reveal-button" id="reveal-button">Fazer uma flor desabrochar 🌱</button>
+                    <div class="revealed-word" id="revealed-word"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kit Carinho Digital -->
+        <section id="care-kit" class="care-kit-section">
+            <div id="petals-canvas-care"></div>
+            <div class="container">
+                <h2 class="section-title">Kit de carinho emergencial</h2>
+                <div class="care-kit-container">
+                    <button class="care-button" id="care-button">Preciso de um carinho 🤗</button>
+                    <div class="care-result" id="care-result">
+                        <div class="care-message" id="care-message"></div>
+                        <div class="care-image" id="care-image"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria da Viagem -->
+        <section id="travel-gallery" class="gallery-section">
+            <div id="petals-canvas-gallery"></div>
+            <div class="container">
+                <h2 class="section-title">Lugares onde o sol encostou</h2>
+                <p class="intro-text">Todo dia que eu puder, vou deixar aqui um pedacinho do nosso mundo —<br>como um bilhete deixado na cabeceira da cama, como um abraço que chega mesmo de longe.</p>
+                <div class="gallery" id="gallery">
+                    <!-- As fotos serão carregadas dinamicamente aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre o Jardim -->
+        <section id="about-garden" class="section-placeholder">
+            <div id="petals-canvas-about"></div>
+            <div class="container">
+                <h2 class="section-title">Por que esse jardim existe</h2>
+                <p class="intro-text">Esse jardim nasceu de um erro que eu cometi.<br>Mas ele cresce com arrependimento sincero, com cuidado, e com a esperança de reconstruir.<br><br>Amor,<br>Eu sei que não posso apagar o que te disse.<br>Mas posso fazer diferente — e esse site é só o começo.<br>Não é um pedido de volta, nem uma cobrança.<br>É um abraço digital, um lembrete delicado de que você ainda pode confiar…<br>… e que eu ainda tô aqui, tentando ser quem você merece.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Botão de Música Flutuante -->
+    <button id="music-toggle-btn" class="music-toggle-button">
+        <svg class="music-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <svg class="mute-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M22 9L18 13"/><path d="M18 9L22 13"/></svg>
+    </button>
+
+     <!-- Botão de Controle das Pétalas -->
+    <button id="toggle-petals" class="petals-toggle-button" aria-label="Alternar chuva de pétalas">
+        <svg class="petals-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3c0 .74.4 1.39 1 1.73V9a2 2 0 0 0 2 2h1.27c.34.6.99 1 1.73 1a3 3 0 0 0 3-3c0-.74-.4-1.39-1-1.73V5a2 2 0 0 0-2-2h-1.27C13.39 2.4 12.74 2 12 2Z"/>
+            <path d="M12 17v1.73c.6.34 1 .99 1 1.73a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-.74.4-1.39 1-1.73V17a2 2 0 0 1 2-2h1.27c.34-.6.99-1 1.73-1a3 3 0 0 1 3 3c0 .74-.4 1.39-1 1.73V19a2 2 0 0 1-2 2h-1.27c-.34.6-.99 1-1.73 1Z"/>
+        </svg>
+        <svg class="petals-off-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M12 2a3 3 0 0 0-3 3c0 .74.4 1.39 1 1.73V9a2 2 0 0 0 2 2h1.27c.34.6.99 1 1.73 1a3 3 0 0 0 3-3c0-.74-.4-1.39-1-1.73V5a2 2 0 0 0-2-2h-1.27C13.39 2.4 12.74 2 12 2Z"/>
+            <path d="M12 17v1.73c.6.34 1 .99 1 1.73a3 3 0 0 1-3 3 3 3 0 0 1-3-3c0-.74.4-1.39 1-1.73V17a2 2 0 0 1 2-2h1.27c.34-.6.99-1 1.73-1a3 3 0 0 1 3 3c0 .74-.4 1.39-1 1.73V19a2 2 0 0 1-2 2h-1.27c-.34.6-.99 1-1.73 1Z"/>
+            <line x1="2" y1="2" x2="22" y2="22"/>
+        </svg>
+    </button>
+
+    <!-- Botão de Música Flutuante -->
+    <audio id="ambient-music" loop>
+        <source src="assets/music/ambient.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Feito com amor, por quem prometeu que nunca mais vai repetir o que te feriu.<br>— do seu Luiz 💛</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="gallery.js"></script>
+    <script src="music.js"></script>
+    <script src="menu.js"></script>
+    <script src="petals.js"></script>
+    
+    <script>
+        // Jardim Interativo - Flores flutuando
+        document.addEventListener("DOMContentLoaded", function() {
+            const flowers = document.querySelectorAll(".floating-flower");
+            const phraseDisplay = document.getElementById("phrase-display");
+            
+            flowers.forEach(flower => {
+                // Animação de flutuação
+                flower.style.animationDelay = Math.random() * 2 + "s";
+                
+                flower.addEventListener("click", function() {
+                    const phrase = this.getAttribute("data-phrase");
+                    phraseDisplay.textContent = phrase;
+                    phraseDisplay.style.opacity = "1";
+                    phraseDisplay.style.transform = "translateY(0)";
+                    
+                    // Efeito de clique na flor
+                    this.style.transform = "scale(1.2)";
+                    setTimeout(() => {
+                        this.style.transform = "scale(1)";
+                    }, 200);
+                });
+            });
+        });
+
+        // Cartinha Digital - Envelope
+        document.getElementById("envelope").addEventListener("click", function() {
+            const letterContent = document.getElementById("letter-content");
+            const envelope = this;
+            
+            envelope.style.transform = "rotateY(180deg)";
+            envelope.style.opacity = "0";
+            
+            setTimeout(() => {
+                envelope.style.display = "none";
+                letterContent.style.display = "block";
+                letterContent.style.opacity = "1";
+                letterContent.scrollIntoView({ behavior: "smooth" });
+            }, 600);
+        });
+
+        // Flores brotando
+        document.getElementById("reveal-button").addEventListener("click", function() {
+            const flowerDisplay = document.getElementById("flower-display");
+            const revealedWord = document.getElementById("revealed-word");
+            const wordsAndPhrases = [
+                { word: "acolhimento", phrase: "Acolhimento: Como quando sua mão encontra a minha sem nem perceber." },
+                { word: "leveza", phrase: "Leveza: Tipo quando você me cheira e finge que não foi nada." },
+                { word: "cumplicidade", phrase: "O ‘xiii’ no banheiro e o sorriso de quem sabe que a gente se ama." },
+                { word: "riso", phrase: "Riso: O KKKKKKKjurooo que sai do nada e vira meu lugar seguro." },
+                { word: "espera", phrase: "Espera: Porque se você se fechar, eu fico aqui — fora, mas por perto." },
+                { word: "carinho", phrase: "Carinho: Como quando você aperta minhas bochechas." }
+            ];
+
+            const randomSelection = wordsAndPhrases[Math.floor(Math.random() * wordsAndPhrases.length)];
+
+            // Limpa a exibição anterior
+            flowerDisplay.innerHTML = "";
+            revealedWord.textContent = "";
+            revealedWord.style.opacity = "0";
+
+            // Cria as flores
+            for (let i = 0; i < 6; i++) {
+                const flower = document.createElement("div");
+                flower.classList.add("growing-flower");
+                flower.textContent = "🌱";
+                flowerDisplay.appendChild(flower);
+            }
+
+            // Anima as flores crescendo
+            const growingFlowers = document.querySelectorAll(".growing-flower");
+            growingFlowers.forEach((flower, index) => {
+                setTimeout(() => {
+                    flower.classList.add("grown");
+                }, index * 150); // Atraso menor para animação mais rápida
+            });
+
+            // Desabrocha uma flor com a palavra e a frase
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * growingFlowers.length);
+                growingFlowers[randomIndex].textContent = "🌸";
+                growingFlowers[randomIndex].classList.add("blossomed");
+                revealedWord.textContent = randomSelection.phrase; // Exibe a frase completa
+                revealedWord.style.opacity = "1";
+            }, 1000); // Tempo para as flores crescerem antes de desabrochar
+        });
+
+        // Kit Carinho Digital
+        document.getElementById("care-button").addEventListener("click", function() {
+            const careResult = document.getElementById("care-result");
+            const careMessage = document.getElementById("care-message");
+            const careImage = document.getElementById("care-image");
+            
+            const messages = [
+                "Ei… respira. Você está indo bem.",
+                "Hoje você é suficiente.",
+                "Se você precisar se recolher, eu espero você florescer de novo.",
+                "Você merece todo o carinho do mundo.",
+                "Está tudo bem não estar bem hoje.",
+                "Você é mais forte do que imagina.",
+                "Mesmo quando você sente que não é nada, você é tudo pra mim.",
+                "Pode não parecer agora, mas só de você estar tentando… já é amor.",
+                "Se quiser fugir, tudo bem. Eu espero no nosso cantinho."
+            ];
+            
+            const images = [
+                "💌", "📝", "💝", "🎁", "💕", "🤗", "🌸", "🌺", "🌻", "⭐"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            
+            careMessage.textContent = randomMessage;
+            careImage.textContent = randomImage;
+            
+            careResult.style.opacity = "1";
+            careResult.style.transform = "scale(1)";
+            
+            // Animação de entrada
+            careResult.style.animation = "careAnimation 0.5s ease-out";
+            
+            // Reset da animação após um tempo
+            setTimeout(() => {
+                careResult.style.animation = "";
+            }, 500);
+        });
+
+        // Botão Entrar no Jardim
+        document.querySelector(".enter-button").addEventListener("click", function() {
+            document.querySelector(".main").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+</html>
+
+

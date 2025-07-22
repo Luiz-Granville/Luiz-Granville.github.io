@@ -1,0 +1,1293 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif; /* Fonte serifada leve para texto corrido */
+    line-height: 1.6;
+    color: #4A4A4A; /* Marrom mais suave para melhor legibilidade */
+    background: #FFFDD0; /* Creme claro mais suave, inspirado no marcador */
+    min-height: 100vh;
+    position: relative; /* Para o botão de música flutuante */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilo de fundo com textura de papel */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/paper_texture.png'); /* Adicionar uma textura de papel */
+    background-repeat: repeat;
+    opacity: 0.15; /* Opacidade mais sutil para não sobrecarregar */
+    z-index: -1;
+}
+
+/* Mensagem de Abertura */
+.opening-message {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-phrase {
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-size: 3.5rem;
+    font-weight: 600; /* Peso médio para mais expressividade */
+    color: #6B4423; /* Marrom mais escuro para melhor contraste, inspirado no marcador */
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1.5s ease-out;
+    letter-spacing: 0.5px; /* Espaçamento sutil entre letras */
+    line-height: 1.2; /* Altura da linha mais compacta para melhor fluidez */
+}
+
+.subtext {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #5A5A5A; /* Marrom acinzentado mais suave */
+    max-width: 700px;
+    margin: 0 auto 3rem auto; /* Centralizado */
+    animation: fadeInUp 1.5s ease-out 0.5s both;
+    line-height: 1.7; /* Altura da linha mais generosa para melhor leitura */
+    letter-spacing: 0.2px; /* Espaçamento sutil entre letras */
+    text-align: center; /* Texto centralizado */
+}
+
+.sunflower-animation img {
+    max-width: 250px; /* Aumentando um pouco o tamanho */
+    margin-bottom: 2rem;
+    animation: bloom 2s ease-out forwards;
+    border-radius: 15px; /* Bordas arredondadas suaves */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sunflower-animation img:hover {
+    transform: scale(1.05); /* Efeito hover sutil */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.enter-button {
+    background: #E6B800; /* Amarelo mais vibrante, inspirado no girassol do marcador */
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.enter-button:hover {
+    background: #6B4423; /* Marrom escuro do marcador no hover */
+    transform: translateY(-5px);
+}
+
+/* Main Content */
+.main {
+    padding: 2rem 0;
+}
+
+/* Menu Flutuante (Lateral Esquerda) */
+.bottom-menu {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    width: 40px;
+    height: 80px;
+    background: rgba(107, 68, 35, 0.95);
+    border-radius: 0 40px 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #E6B800;
+    border-left: none;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1001;
+    order: 2;
+}
+
+.menu-toggle:hover {
+    background: rgba(107, 68, 35, 1);
+    transform: translateX(2px);
+}
+
+.menu-toggle svg {
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.bottom-menu.expanded .menu-toggle svg {
+    transform: rotate(180deg);
+}
+
+.menu-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.5rem;
+    background: rgba(107, 68, 35, 0.95);
+    backdrop-filter: blur(10px);
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width 0.3s ease, padding 0.3s ease;
+    position: relative;
+    order: 1;
+}
+
+.bottom-menu.expanded .menu-items {
+    max-width: 250px;
+    padding: 1rem;
+}
+
+.menu-items li {
+    display: flex;
+    justify-content: stretch;
+}
+
+.menu-items a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    white-space: nowrap;
+}
+
+.menu-items a:hover {
+    background: rgba(230, 184, 0, 0.8);
+    transform: translateX(5px);
+}
+
+.menu-items svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+}
+
+
+
+@media (max-width: 768px) {
+    .menu-items a {
+        font-size: 0.8rem;
+        padding: 0.6rem 0.8rem;
+        gap: 0.6rem;
+    }
+    
+    .menu-items svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .menu-toggle {
+        width: 35px;
+        height: 70px;
+    }
+    
+    .bottom-menu.expanded .menu-items {
+        max-width: 200px;
+    }
+}
+
+/* Seções Genéricas */
+.section-placeholder {
+    padding: 4rem 0;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-size: 2.8rem;
+    font-weight: 600; /* Peso médio para mais expressividade */
+    color: #E6B800; /* Amarelo vibrante do girassol */
+    margin-bottom: 2rem;
+    position: relative;
+    letter-spacing: 0.5px; /* Espaçamento sutil entre letras */
+    line-height: 1.3; /* Altura da linha mais compacta */
+    text-align: center; /* Título centralizado */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: #E6B800; /* Amarelo vibrante do girassol */
+    border-radius: 2px;
+}
+
+.intro-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    color: #5A5A5A; /* Marrom acinzentado mais suave */
+    line-height: 1.7; /* Altura da linha mais generosa para melhor leitura */
+    letter-spacing: 0.2px; /* Espaçamento sutil entre letras */
+}
+
+/* Galeria Section */
+.gallery-section {
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 2rem auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    border: 5px solid #F0E68C; /* Moldura dourada */
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 280px; /* Ajustado para melhor visualização em grade */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    filter: sepia(0.2) brightness(1.05); /* Filtro levemente dourado/desbotado */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    font-family: 'Dancing Script', cursive; /* Legenda como escrita à mão original */
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4; /* Altura da linha mais compacta para legendas */
+    letter-spacing: 0.3px; /* Espaçamento sutil entre letras */
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+/* Drawing Section */
+.drawing-section {
+    padding: 4rem 0;
+    text-align: center;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.drawing-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#p5-canvas {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Music Section (Playlist Afetiva) */
+.music-section {
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 2rem auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.amazon-music-embed {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+}
+
+.amazon-music-embed iframe {
+    border-radius: 15px;
+}
+
+/* Botão de Música Flutuante */
+.music-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #E6B800; /* Amarelo vibrante do girassol */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.music-toggle-button:hover {
+    background: #6B4423; /* Marrom escuro do marcador */
+    transform: scale(1.1);
+}
+
+/* Footer */
+.footer {
+    background: rgba(107, 68, 35, 0.9); /* Marrom escuro do marcador */
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .highlight-phrase {
+        font-size: 2.5rem;
+    }
+    
+    .subtext {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .drawing-container {
+        padding: 1rem;
+    }
+    
+    .amazon-music-embed iframe {
+        height: 300px;
+    }
+
+    .bottom-menu ul {
+        gap: 1rem;
+    }
+
+    .bottom-menu a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .music-toggle-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .highlight-phrase {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-item img {
+        height: 250px;
+    }
+    
+    .amazon-music-embed iframe {
+        height: 250px;
+    }
+
+    .bottom-menu ul {
+        flex-direction: column;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E6B800; /* Amarelo vibrante do girassol */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6B4423; /* Marrom escuro do marcador */
+}
+
+
+/* Jardim Interativo */
+.interactive-garden-section {
+    padding: 4rem 0;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+}
+
+.interactive-garden-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/images/girassol_pattern.png');
+    background-repeat: repeat;
+    background-size: 100px 100px; /* Tamanho do padrão */
+    opacity: 0.05; /* Muito sutil para não interferir no conteúdo */
+    border-radius: 20px;
+    z-index: 0;
+}
+
+.interactive-garden-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.floating-garden {
+    position: relative;
+    height: 400px;
+    margin: 2rem 0;
+    overflow: hidden;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+}
+
+.floating-flower {
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-flower:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.floating-flower:nth-child(2) { top: 60%; left: 80%; animation-delay: 0.5s; }
+.floating-flower:nth-child(3) { top: 30%; left: 60%; animation-delay: 1s; }
+.floating-flower:nth-child(4) { top: 70%; left: 20%; animation-delay: 1.5s; }
+.floating-flower:nth-child(5) { top: 40%; left: 40%; animation-delay: 2s; }
+.floating-flower:nth-child(6) { top: 80%; left: 70%; animation-delay: 2.5s; }
+
+.floating-flower:hover {
+    transform: scale(1.2);
+}
+
+.phrase-display {
+    margin-top: 2rem;
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-size: 1.8rem;
+    font-weight: 500; /* Peso médio para mais expressividade */
+    color: #6B4423; /* Marrom escuro do marcador */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4; /* Altura da linha mais compacta */
+    letter-spacing: 0.3px; /* Espaçamento sutil entre letras */
+    text-align: center;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Cartinha Digital */
+.digital-letter-section {
+    padding: 4rem 0;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.envelope-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    position: relative; /* Necessário para o posicionamento absoluto do texto */
+}
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: #F5DEB3;
+    border: 2px solid #D2B48C;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.envelope-flap {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid #DEB887;
+    z-index: 1;
+}
+
+.envelope-text {
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-size: 1.2rem;
+    font-weight: 600; /* Mais negrito conforme solicitado */
+    color: #6B4423; /* Marrom escuro do marcador */
+    letter-spacing: 0.3px; /* Espaçamento sutil entre letras */
+    position: absolute;
+    top: 65%; /* Movendo mais para baixo na carta */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.letter-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.letter-paper {
+    background: #FFFEF7;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #E6E6FA;
+    position: relative;
+}
+
+.letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/images/paper_texture.png');
+    background-repeat: repeat;
+    opacity: 0.1;
+    border-radius: 15px;
+}
+
+.letter-text {
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #4A4A4A;
+    margin-bottom: 1rem;
+    line-height: 1.8; /* Altura da linha mais generosa para melhor leitura */
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.3px; /* Espaçamento sutil entre letras */
+}
+
+.word-wheel-section {
+    padding: 4rem 0;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+}
+
+.word-wheel-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/images/girassol_pattern.png');
+    background-repeat: repeat;
+    background-size: 80px 80px; /* Tamanho menor para esta seção */
+    opacity: 0.03; /* Ainda mais sutil */
+    border-radius: 20px;
+    z-index: 0;
+}
+
+.word-wheel-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.bloom-reveal-container {
+    display: flex;
+    flex-direction: column; /* Manter coluna para o container principal */
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 2rem;
+    gap: 20px; /* Espaçamento entre os elementos */
+}
+
+.flower-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px; /* Espaçamento entre as flores */
+    margin-bottom: 20px; /* Espaço entre as flores e o botão */
+}
+
+.revealed-word {
+    margin-top: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #E6B800;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    max-width: 80%; /* Aumentar a largura máxima para o texto */
+    text-align: center;
+    line-height: 1.2; /* Ajustar line-height para evitar quebras */
+}
+
+/* Kit Carinho Digital */
+.care-kit-section {
+    padding: 4rem 0;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+}
+
+.care-kit-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/images/girassol_pattern.png');
+    background-repeat: repeat;
+    background-size: 90px 90px; /* Tamanho médio para esta seção */
+    opacity: 0.04; /* Sutil mas um pouco mais visível */
+    border-radius: 20px;
+    z-index: 0;
+}
+
+.care-kit-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.care-kit-container {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.care-button {
+    background: linear-gradient(135deg, #FFB6C1, #FFA07A);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-size: 1.4rem;
+    font-weight: 500; /* Peso médio para mais expressividade */
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-weight: bold;
+    letter-spacing: 0.3px; /* Espaçamento sutil entre letras */
+}
+
+.care-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.care-result {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.care-message {
+    font-family: 'Dancing Script', cursive; /* Fonte manuscrita delicada original */
+    font-size: 1.8rem;
+    font-weight: 500; /* Peso médio para mais expressividade */
+    color: #6B4423; /* Marrom escuro do marcador */
+    margin-bottom: 1rem;
+    line-height: 1.4; /* Altura da linha mais compacta */
+    letter-spacing: 0.3px; /* Espaçamento sutil entre letras */
+    text-align: center;
+}
+
+.care-image {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+@keyframes careAnimation {
+    0% {
+        transform: scale(0.8) rotate(-5deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Melhorias na Galeria */
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    border: 8px solid #F5E050; /* Amarelo mais suave para a moldura */
+    transform: rotate(-1deg);
+}
+
+.gallery-item:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02) rotate(0deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background-image: url('assets/images/paper_texture.png');
+    background-repeat: repeat;
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: 15px;
+}
+
+/* Responsividade para as novas seções */
+@media (max-width: 768px) {
+    .floating-garden {
+        height: 300px;
+    }
+    
+    .floating-flower {
+        font-size: 2.5rem;
+    }
+    
+    .phrase-display {
+        font-size: 1.4rem;
+    }
+    
+    .care-button {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+    
+    .envelope {
+        width: 250px;
+        height: 167px;
+    }
+    
+    .envelope-flap {
+        border-left-width: 125px;
+        border-right-width: 125px;
+        border-bottom-width: 83px;
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+    .floating-garden {
+        height: 250px;
+    }
+    
+    .floating-flower {
+        font-size: 2rem;
+    }
+    
+    .care-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .envelope {
+        width: 200px;
+        height: 133px;
+    }
+    
+    .envelope-flap {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-bottom-width: 67px;
+    }
+    
+
+    
+    .letter-paper {
+        padding: 2rem;
+    }
+    
+    .letter-text {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+.menu-items {
+    border: 2px solid #E6B800;
+    border-left: none;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
+.music-section .intro-text {
+    text-align: center;
+}
+
+
+
+
+.instruction-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #5A5A5A;
+}
+
+
+
+
+@media (min-width: 769px) {
+    .opening-message .container {
+        display: flex;
+        flex-direction: column; /* Container principal em coluna para o título, conteúdo e botão */
+        justify-content: center;
+        align-items: center;
+        max-width: 1200px;
+    }
+
+    .opening-message .highlight-phrase {
+        margin-bottom: 2rem; /* Espaço abaixo do título */
+    }
+
+    .opening-message .content-wrapper {
+        display: flex;
+        flex-direction: row; /* Texto e imagem lado a lado */
+        align-items: center;
+        width: 100%;
+        margin-bottom: 2rem; /* Espaço entre o conteúdo e o botão */
+    }
+
+    .opening-message .text-content {
+        flex: 1;
+        padding-right: 40px;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    .opening-message .sunflower-animation {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .opening-message .sunflower-animation img {
+        max-width: 375px; /* 250px * 1.5 = 375px */
+        margin-bottom: 0;
+    }
+
+    .opening-message .enter-button {
+        margin-top: 2rem; /* Espaço acima do botão */
+    }
+}
+
+
+@keyframes blossom {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.growing-flower {
+    font-size: 2.5rem;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+}
+
+.growing-flower.grown {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.growing-flower.blossomed {
+    animation: blossom 0.5s ease-out forwards;
+}
+
+.reveal-button {
+    background: #E6B800;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.reveal-button:hover {
+    background: #6B4423;
+    transform: translateY(-5px);
+}
+
+
+
+/* Estilos para o Sistema de Chuva de Pétalas */
+
+/* Canvas das pétalas */
+#petals-canvas,
+#petals-canvas-garden,
+#petals-canvas-music,
+#petals-canvas-letter,
+#petals-canvas-wheel,
+#petals-canvas-care,
+#petals-canvas-gallery,
+#petals-canvas-about {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Permite cliques nos elementos abaixo */
+    overflow: hidden;
+}
+
+/* Garantir que o conteúdo fique acima das pétalas */
+.opening-message .container,
+.interactive-garden-section .container,
+.music-section .container,
+.digital-letter-section .container,
+.word-wheel-section .container,
+.care-kit-section .container,
+.gallery-section .container,
+.section-placeholder .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Garantir que todas as seções tenham posicionamento relativo */
+.interactive-garden-section,
+.music-section,
+.digital-letter-section,
+.word-wheel-section,
+.care-kit-section,
+.gallery-section,
+.section-placeholder {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Botão de controle das pétalas */
+.petals-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 100px; /* Posicionado à esquerda do botão de música com espaçamento */
+    background: #E6B800; /* Mesmo amarelo do botão de música */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.petals-toggle-button:hover {
+    background: #6B4423; /* Mesmo marrom do botão de música */
+    transform: scale(1.1);
+}
+
+.petals-toggle-button:active {
+    transform: scale(0.95);
+}
+
+/* Ícones do botão de pétalas */
+.petals-icon,
+.petals-off-icon {
+    transition: opacity 0.3s ease;
+}
+
+/* Responsividade para o botão de controle */
+@media (max-width: 768px) {
+    .petals-toggle-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        right: 80px; /* Ajuste para mobile */
+    }
+}
+
+/* Acessibilidade - respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    #petals-canvas {
+        display: none !important;
+    }
+    
+    .petals-toggle-button {
+        display: none;
+    }
+}
+
+/* Efeitos especiais para interação */
+.opening-message:hover #petals-canvas {
+    /* Sutil aumento na opacidade quando hover na seção */
+    opacity: 1;
+}
+
+/* Animação suave para o canvas */
+#petals-canvas {
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+}
+
+/* Garantir que o canvas não interfira com a rolagem */
+.opening-message {
+    touch-action: pan-y;
+}
+
+/* Estilo para quando as pétalas estão desabilitadas */
+#petals-canvas[style*="display: none"] + .container {
+    /* Ajustes quando as pétalas estão desabilitadas, se necessário */
+}
+
+/* Melhorar a visibilidade do texto sobre as pétalas */
+.highlight-phrase {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), 
+                 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.subtext {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1),
+                 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Efeito especial para o botão "Entrar no nosso Jardim" */
+.enter-button {
+    position: relative;
+    z-index: 3; /* Garantir que fique acima das pétalas */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Animação sutil para indicar interatividade */
+@keyframes petalGlow {
+    0%, 100% { 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    }
+    50% { 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 
+                    0 0 20px rgba(230, 184, 0, 0.3); 
+    }
+}
+
+.petals-toggle-button:focus {
+    animation: petalGlow 2s ease-in-out infinite;
+    outline: none;
+}
+
+/* Indicador visual para usuários que usam teclado */
+.petals-toggle-button:focus-visible {
+    outline: 2px solid #E6B800;
+    outline-offset: 2px;
+}
+
